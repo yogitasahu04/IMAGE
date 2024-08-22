@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Sacramento&display=swap');
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-image: url("https://e0.pxfuel.com/wallpapers/496/396/desktop-wallpaper-graphy-camera-background-becuo-for-your-mobile-tablet-explore-background-for-background-and-black-aesthetic-camera.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin: 20px;
+            padding: 3px;
+        }
+
+        .logo {
+            font-family: 'Sacramento', cursive;
+            font-size: 80px;
+            color: #ffcc00;
+            margin: 0;
+            padding-top: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .subtitle {
+            font-size: 34px;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 2px;
+            animation: slideIn 3s ease-in-out;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 100px;
+            padding: 50px;
+        }
+
+        .click-button {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            color: #1c1b1b;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 56px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .click-button:hover {
+            background-color: #ffaa00;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Large Desktops and Laptops */
+        @media (min-width: 1200px) {
+            .logo {
+                font-size: 100px;
+            }
+
+            .subtitle {
+                font-size: 40px;
+            }
+
+            .button-container {
+                margin-top: 120px;
+            }
+
+            .click-button {
+                font-size: 20px;
+                padding: 12px 24px;
+            }
+        }
+
+        /* Tablets and Medium Devices */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .logo {
+                font-size: 70px;
+            }
+
+            .subtitle {
+                font-size: 30px;
+            }
+
+            .button-container {
+                margin-top: 80px;
+                padding: 40px;
+            }
+
+            .click-button {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+
+        /* Mobile Devices */
+        @media (max-width: 767px) and (min-width: 480px) {
+            .logo {
+                font-size: 50px;
+                padding-top: 30px;
+            }
+
+            .subtitle {
+                font-size: 24px;
+            }
+
+            .button-container {
+                margin-top: 50px;
+                padding: 20px;
+            }
+
+            .click-button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 479px) {
+            .logo {
+                font-size: 40px;
+                padding-top: 20px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .button-container {
+                margin-top: 30px;
+                padding: 10px;
+            }
+
+            .click-button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo">MALHAR</h1>
+        <h2 class="subtitle">Image Gallery</h2>
+    </div>
+
+    <div class="button-container">
+        <a href="second.html"><button class="click-button">click</button></a>
+    </div>
+</body>
+</html>

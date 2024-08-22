@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            height: 80px;
+            width: 100%;
+            text-align: center;
+            line-height: 100px;
+            font-family: 'Roboto';
+            font-size: 40px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            text-shadow: 0 0 10px #b0a247, 0 0 20px #b0a247, 0 0 30px #b0a247, 0 0 40px #b0a247;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #b0a247, 0 0 20px #b0a247, 0 0 30px #b0a247, 0 0 40px #b0a247;
+            }
+            100% {
+                text-shadow: 0 0 20px #ebaf0f, 0 0 30px #ebaf0f, 0 0 40px #ebaf0f, 0 0 50px #ebaf0f;
+            }
+        }
+
+        .image-container {
+            width: 90%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Ensure three images per row */
+            gap: 30px;
+        }
+
+        .image-box {
+            text-align: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            max-width: 350px;
+            height:250px ;
+            border-radius: 40px;
+            box-shadow: 2px 4px #ebaf0f;
+        }
+
+        .button {
+            display: block;
+            width: 60%;
+            padding: 6px;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 50px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #ebaf0f;
+            color: black;
+            font-weight: bold;
+            border: 2px solid rgb(29, 31, 20);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 56px;
+            margin: 10px auto 0;
+            box-shadow: 3px 3px rgb(195, 217, 129);
+        }
+
+        .button:hover {
+            background-color: #35820f;
+            transform: scale(1.1);
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 1px 1px rgb(243, 219, 99);
+            margin-bottom: 20px;
+            font-size: 20px;
+            background-color: #e9e3d2;
+        }
+
+        .unavailable-message {
+            color: #e5b530;
+            font-weight: bold;
+            font-family: Roboto;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .image-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 images per row on smaller screens */
+            }
+
+            .button {
+                width: 80%;
+                font-size: 13px;
+            }
+
+            input[type="text"] {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container {
+                grid-template-columns: 1fr; /* 1 image per row on very small screens */
+            }
+
+            h1 {
+                font-size: 24px;
+                line-height: 70px;
+            }
+
+            .button {
+                width: 90%;
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ALBUM</h1>
+    <input type="text" id="searchInput" placeholder="Search images..." onkeyup="searchImages()">
+    <div class="image-container" id="imageGallery">
+        <div class="image-box">
+            <img src="img/Animal.jpg" alt="animals" data-title="animals">
+            <a href="animal.html" class="button">Animals</a>
+        </div>
+        <div class="image-box">
+            <img src="img/nature.jpeg" alt="nature" data-title="nature">
+            <a href="nature.html" class="button">Nature</a>
+        </div>
+        <div class="image-box">
+            <img src="img/cortoon.jpeg" alt="cartoon" data-title="cartoon">
+            <a href="cortoon.html" class="button">Cartoon</a>
+        </div>
+        <div class="image-box">
+            <img src="img/place.jpg" alt="places" data-title="places">
+            <a href="place.html" class="button">Places</a>
+        </div>
+        <div class="image-box">
+            <img src="img/food.jpg" alt="food" data-title="food">
+            <a href="food.html" class="button">Food</a>
+        </div>
+        <div class="image-box">
+            <img src="img/black.jpeg" alt="wallpaper" data-title="wallpaper">
+            <a href="wallpaper.html" class="button">Wallpaper</a>
+        </div>
+        <div class="image-box">
+            <img src="img/f.jpg" alt="fashion" data-title="fashion">
+            <a href="fasion.html" class="button">Fashion</a>
+        </div>
+    </div>
+    <div class="unavailable-message" id="unavailableMessage" style="display: none;">
+        No images match your search.
+    </div>
+    <script>
+        function searchImages() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const images = document.querySelectorAll('#imageGallery .image-box');
+            let found = false;  // Track if any matching images are found
+
+            images.forEach(box => {
+                const title = box.querySelector('img').getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    box.style.display = 'block';
+                    found = true;  // If a match is found, set found to true
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+
+            const unavailableMessage = document.getElementById('unavailableMessage');
+            unavailableMessage.style.display = found ? 'none' : 'block';  // Show or hide the message based on the found variable
+        }
+    </script>
+</body>
+</html>
